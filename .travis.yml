@@ -66,13 +66,25 @@ jobs:
 
     - stage: utils
       name: checkr
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - gfortran-5
       install: bash ${UTILS}/install_checkr.sh
-      script: echo -e "$FILENAME\nCHECKR.OUT\n\nDONE" | ./checkr-linux-64
+      script: echo -e "$FILENAME\nCHECKR.OUT\n\nDONE" | ./checkr
 
     - stage: utils
       name: psyche
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - gfortran-5
       install: bash ${UTILS}/install_psyche.sh
-      script: echo -e "$FILENAME\nPSYCHE.OUT\n\nDONE" | ./psyche-linux-64
+      script: echo -e "$FILENAME\nPSYCHE.OUT\n\nDONE" | ./psyche
 
 
     - stage: processing
